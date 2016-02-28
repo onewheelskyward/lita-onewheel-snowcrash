@@ -35,7 +35,7 @@ module Lita
       def get_markov
         puts File.join(File.dirname(File.expand_path(__FILE__)), '../../dict/snowcrash')
         # MarkyMarkov::Dictionary.new(File.join(File.dirname(File.expand_path(__FILE__)), 'dict/snowcrash'))
-        MarkyMarkov::Dictionary.new('lib/dict/snowcrash')
+        MarkyMarkov::Dictionary.new('dict/snowcrash')
       end
 
       def return_word_chain(number)
