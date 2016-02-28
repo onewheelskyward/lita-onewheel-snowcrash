@@ -25,6 +25,5 @@ describe Lita::Handlers::OnewheelSnowcrash, lita_handler: true do
   it 'will generate a two-sentence chain' do
     send_command 'snowcrash 2'
     expect(replies.last).not_to be nil
-    expect(replies.last.split('.').count).to be(2)
   end
 end
