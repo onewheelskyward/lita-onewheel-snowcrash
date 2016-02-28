@@ -1,22 +1,23 @@
-# lita-automatic-pancake
+# lita-onewheel-snowcrash
 
-[![Build Status](https://travis-ci.org/onewheelskyward/lita-automatic-pancake.png?branch=master)](https://travis-ci.org/onewheelskyward/lita-automatic-pancake)
-[![Coverage Status](https://coveralls.io/repos/onewheelskyward/lita-automatic-pancake/badge.png)](https://coveralls.io/r/onewheelskyward/lita-automatic-pancake)
+[![Build Status](https://travis-ci.org/onewheelskyward/lita-onewheel-snowcrash.png?branch=master)](https://travis-ci.org/onewheelskyward/lita-onewheel-snowcrash)
+[![Coverage Status](https://coveralls.io/repos/onewheelskyward/lita-onewheel-snowcrash/badge.png)](https://coveralls.io/r/onewheelskyward/lita-onewheel-snowcrash)
 
-TODO: Add a description of the plugin.
+Builds a markov chain based on the corpus of Snow Crash by Neal Stephenson.
 
 ## Installation
 
-Add lita-automatic-pancake to your Lita instance's Gemfile:
+Add lita-onewheel-snowcrash to your Lita instance's Gemfile:
 
 ``` ruby
-gem "lita-onewheel-"
+gem 'lita-onewheel-skycrash'
 ```
 
 ## Configuration
 
-TODO: Describe any configuration attributes the plugin exposes.
 
 ## Usage
 
-TODO: Describe the plugin's features and how to use them.
+!snowcrash
+
+!snowcrash 7
