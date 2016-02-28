@@ -39,13 +39,17 @@ module Lita
       def return_word_chain(number)
         Lita.logger.info "Generating #{number} words."
         markov = get_markov # Saves/opens dictionary.mmd
-        markov.generate_n_words(number.to_i)
+        words = markov.generate_n_words(number.to_i)
+        Lita.logger.info words
+        words
       end
 
       def return_sentence_chain(number)
         Lita.logger.info "Generating #{number} sentences."
         markov = get_markov # Saves/opens dictionary.mmd
-        markov.generate_n_sentences(number.to_i)
+        sentences = markov.generate_n_sentences(number.to_i)
+        Lita.logger.info sentences
+        sentences
       end
 
       Lita.register_handler(self)
