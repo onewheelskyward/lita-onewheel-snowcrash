@@ -1,3 +1,5 @@
+require 'marky_markov'
+
 module Lita
   module Handlers
     class OnewheelSnowcrash < Handler
@@ -17,7 +19,9 @@ module Lita
       end
 
       def return_chain(number)
-
+        puts "Generating #{number} words."
+        markov = MarkyMarkov::Dictionary.new('dict/snowcrash') # Saves/opens dictionary.mmd
+        markov.generate_n_words(number.to_i)
       end
 
       Lita.register_handler(self)
