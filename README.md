@@ -10,7 +10,7 @@ Builds a markov chain based on the corpus of Snow Crash by Neal Stephenson.
 Add lita-onewheel-snowcrash to your Lita instance's Gemfile:
 
 ``` ruby
-gem 'lita-onewheel-skycrash'
+gem 'lita-onewheel-snowcrash'
 ```
 
 ## Configuration
