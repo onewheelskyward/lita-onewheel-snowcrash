@@ -16,11 +16,9 @@ module Lita
             :generate_words_by_number,
             command: true
 
-      @@markov = MarkyMarkov::Dictionary.new('dict/snowcrash')
-
-      on(:connected) do |load_dict|
-        get_markov
-      end
+      Markov = MarkyMarkov::Dictionary.new('dict/snowcrash')
+      Markov.parse_file(File.expand_path('../../dict/snowcrash.txt',
+        File.dirname(__FILE__)))
 
       def generate_random_sentence(response)
         response.reply return_sentence_chain(1)
@@ -38,22 +36,19 @@ module Lita
         response.reply return_word_chain(response.matches[0][0])
       end
 
-      def get_markov
-        @@markov.parse_file(File.expand_path('../../dict/snowcrash.txt', File.dirname(__FILE__)))
-      end
-
       def return_word_chain(number)
         Lita.logger.info "Generating #{number} words."
-        words = @@markov.generate_n_words(number.to_i)
-        Lita.logger.info words
-        words
+        log_and_return Markov.generate_n_words(number.to_i)
       end
 
       def return_sentence_chain(number)
         Lita.logger.info "Generating #{number} sentences."
-        sentences = @@markov.generate_n_sentences(number.to_i)
-        Lita.logger.info sentences
-        sentences
+        log_and_return Markov.generate_n_sentences(number.to_i)
+      end
+
+      def log_and_return(message)
+        Lita.logger.info message
+        message
       end
 
       Lita.register_handler(self)
