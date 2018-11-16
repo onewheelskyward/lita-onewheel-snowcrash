@@ -15,40 +15,81 @@ module Lita
       route /^snowcrashwords (\d+)$/i,
             :generate_words_by_number,
             command: true
+      route /^trump$/i,
+            :generate_random_trump_sentence,
+            command: true
+      route /^trump (\d+)$/i,
+            :generate_trump_by_number,
+            command: true
+      route /^trumpwords$/i,
+            :generate_trump_random_words,
+            command: true
+      route /^trumpwords (\d+)$/i,
+            :generate_trump_words_by_number,
+            command: true
 
       Markov = MarkyMarkov::Dictionary.new('dict/snowcrash')
       Markov.parse_file(File.expand_path('../../dict/snowcrash.txt',
         File.dirname(__FILE__)))
 
+      TrumpMarkov = MarkyMarkov::Dictionary.new('dict/trump')
+      TrumpMarkov.parse_file(File.expand_path('../../dict/trump.txt',
+        File.dirname(__FILE__)))
+
       def generate_random_sentence(response)
-        response.reply return_sentence_chain(1)
+        sentence = Markov.generate_n_sentences(1)
+        Lita.logger.info sentence
+        response.reply sentence
       end
 
       def generate_by_number(response)
-        response.reply return_sentence_chain(response.matches[0][0])
+        sentences = Markov.generate_n_sentences(response.matches[0][0].to_i)
+        Lita.logger.info sentences
+        response.reply sentences
       end
 
       def generate_random_words(response)
-        response.reply return_word_chain(Random::rand(20))
+        number = Random::rand(20)
+        Lita.logger.info "Generating #{number} words."
+        words = Markov.generate_n_words(number.to_i)
+        Lita.logger.info words
+        response.reply words
       end
 
       def generate_words_by_number(response)
-        response.reply return_word_chain(response.matches[0][0])
+        number = response.matches[0][0].to_i
+        Lita.logger.info "Generating #{} words."
+        words = Markov.generate_n_words(number.to_i)
+        Lita.logger.info words
+        response.reply words
       end
 
-      def return_word_chain(number)
+      def generate_random_trump_sentence(response)
+        sentence = TrumpMarkov.generate_n_sentences(1)
+        Lita.logger.info sentence
+        response.reply sentence
+      end
+
+      def generate_trump_by_number(response)
+        sentences = TrumpMarkov.generate_n_sentences(response.matches[0][0].to_i)
+        Lita.logger.info sentences
+        response.reply sentences
+      end
+
+      def generate_trump_random_words(response)
+        number = Random::rand(20)
         Lita.logger.info "Generating #{number} words."
-        log_and_return Markov.generate_n_words(number.to_i)
+        words = TrumpMarkov.generate_n_words(number.to_i)
+        Lita.logger.info words
+        response.reply words
       end
 
-      def return_sentence_chain(number)
-        Lita.logger.info "Generating #{number} sentences."
-        log_and_return Markov.generate_n_sentences(number.to_i)
-      end
-
-      def log_and_return(message)
-        Lita.logger.info message
-        message
+      def generate_trump_words_by_number(response)
+        number = response.matches[0][0].to_i
+        Lita.logger.info "Generating #{} words."
+        words = TrumpMarkov.generate_n_words(number.to_i)
+        Lita.logger.info words
+        response.reply words
       end
 
       Lita.register_handler(self)
