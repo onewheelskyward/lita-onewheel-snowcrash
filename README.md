@@ -1,16 +1,16 @@
-# lita-onewheel-snowcrash
+# lita-onewheel-shiftcal
 
-[![Build Status](https://travis-ci.org/onewheelskyward/lita-onewheel-snowcrash.png?branch=master)](https://travis-ci.org/onewheelskyward/lita-onewheel-snowcrash)
-[![Coverage Status](https://coveralls.io/repos/onewheelskyward/lita-onewheel-snowcrash/badge.png)](https://coveralls.io/r/onewheelskyward/lita-onewheel-snowcrash)
+[![Build Status](https://travis-ci.org/onewheelskyward/lita-onewheel-shiftcal.png?branch=master)](https://travis-ci.org/onewheelskyward/lita-onewheel-shiftcal)
+[![Coverage Status](https://coveralls.io/repos/onewheelskyward/lita-onewheel-shiftcal/badge.png)](https://coveralls.io/r/onewheelskyward/lita-onewheel-shiftcal)
 
-Builds a markov chain based on the corpus of Snow Crash by Neal Stephenson.
+Utilizes the shift calendar's API to search for rides.
 
 ## Installation
 
-Add lita-onewheel-snowcrash to your Lita instance's Gemfile:
+Add lita-onewheel-shiftcal to your Lita instance's Gemfile:
 
 ``` ruby
-gem 'lita-onewheel-snowcrash'
+gem 'lita-onewheel-shiftcal'
 ```
 
 ## Configuration
@@ -18,6 +18,4 @@ gem 'lita-onewheel-snowcrash'
 
 ## Usage
 
-!snowcrash
-
-!snowcrash 7
+!bikes grilled
